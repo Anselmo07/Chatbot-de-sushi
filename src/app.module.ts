@@ -1,14 +1,31 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { SushiModule } from 'src/chatbot/chatbot.module';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { MenuModule } from './menu/menu.module';
+import { OrdersModule } from './orders/orders.module';
+import { FaqsModule } from './faqs/faqs.module';
+import { MenuModule } from './menu/menu.module';
+import { OrdersModule } from './orders/orders.module';
+import { FaqsModule } from './faqs/faqs.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/sushi_chatbot', {
-      useNewUrlParser: true,
+    ConfigModule.forRoot(), // Carga variables de entorno desde .env
+    TypeOrmModule.forRoot({
+      type: 'mongodb',
+      url: process.env.MONGO_URI,
       useUnifiedTopology: true,
+      autoLoadEntities: true,
     }),
-    SushiModule,
+    MenuModule,
+    OrdersModule,
+    FaqsModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
+
+
