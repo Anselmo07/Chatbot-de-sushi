@@ -1,20 +1,21 @@
-import { Entity, ObjectIdColumn, Column } from 'typeorm';
+import { Entity, Column, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class Order {
   @ObjectIdColumn()
-  id: string;
+  _id: string;
 
   @Column()
-  items: { menuId: string; name: string; quantity: number; price: number }[];
+  userName: string;
 
   @Column()
-  totalPrice: number;
+  address: string;
 
-  @Column({ default: 'pending' })
-  status: string;
+  @Column()
+  product: string; // Puede ser el ID o el nombre del producto
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  @Column({ default: 'En proceso' })
+  status: string; // Estado del pedido
 }
+
 

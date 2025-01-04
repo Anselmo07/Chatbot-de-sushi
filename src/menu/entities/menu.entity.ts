@@ -1,9 +1,10 @@
+import { ObjectId } from 'mongodb';
 import { Entity, ObjectIdColumn, Column } from 'typeorm';
 
 @Entity()
 export class Menu {
   @ObjectIdColumn()
-  id: string;
+  _id: ObjectId;
 
   @Column()
   name: string;
@@ -13,9 +14,6 @@ export class Menu {
 
   @Column()
   price: number;
-
-  @Column()
-  category: string;
 
   @Column({ default: true })
   available: boolean;

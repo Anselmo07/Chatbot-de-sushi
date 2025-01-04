@@ -10,14 +10,10 @@ export class OrdersService {
     private ordersRepository: Repository<Order>,
   ) {}
 
-  async createOrder(items: any[]): Promise<Order> {
-    const totalPrice = items.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0,
-    );
-
-    const newOrder = this.ordersRepository.create({ items, totalPrice });
-    return this.ordersRepository.save(newOrder);
+  async createOrder(userName: string, address: string, product: string): Promise<Order> {
+    const order = this.ordersRepository.create({ userName, address, product });
+    return this.ordersRepository.save(order);
   }
+  
 }
 

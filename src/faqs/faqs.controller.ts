@@ -18,5 +18,10 @@ export class FAQController {
     return this.faqService.createFAQ(body);
   }
 
+  @Get('status')
+  getBusinessStatus() {
+    return { message: this.faqService.isOpen() };
+  }
+
 }
 

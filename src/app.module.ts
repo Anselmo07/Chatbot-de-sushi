@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 // import { AppController } from './app.controller';
@@ -7,6 +7,7 @@ import { MenuModule } from './menu/menu.module';
 import { OrdersModule } from './orders/orders.module';
 import { FaqsModule } from './faqs/faqs.module';
 import { Faq } from './faqs/entities/faq.entity';
+import { BusinessHoursMiddleware } from './middleware/horarios';
 
 @Module({
   imports: [
@@ -28,6 +29,12 @@ import { Faq } from './faqs/entities/faq.entity';
   providers: [AppService],
 })
 export class AppModule {
+
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(BusinessHoursMiddleware) // Aplica el middleware
+      .forRoutes({ path: '*', method: RequestMethod.ALL }); // Aplica a todas las rutas
+  }
 
   constructor() {
     // Verificar que la variable de entorno esté cargada correctamente
