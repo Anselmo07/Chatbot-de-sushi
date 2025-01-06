@@ -16,8 +16,8 @@ body {
   font-family: Arial, sans-serif;
   font-size: 100%; /* 16px por defecto */
   line-height: 1.5;
-  background-color: #fff;
-  color: #000;
+  background-color: black;
+  color: white;
 }
 
 /* Eliminar decoraciones de links */
