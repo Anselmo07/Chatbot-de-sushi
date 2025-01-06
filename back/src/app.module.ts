@@ -30,16 +30,11 @@ import { BusinessHoursMiddleware } from './middleware/horarios';
 })
 export class AppModule {
 
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(BusinessHoursMiddleware) // Aplica el middleware
-      .forRoutes({ path: '*', method: RequestMethod.ALL }); // Aplica a todas las rutas
-  }
-
-  constructor() {
-    // Verificar que la variable de entorno esté cargada correctamente
-    console.log('MONGO_URI:', process.env.MONGO_URI); // Esto imprimirá la URL de conexión
-  }
+  // configure(consumer: MiddlewareConsumer) {
+  //   consumer
+  //     .apply(BusinessHoursMiddleware) // Aplica el middleware
+  //     .forRoutes({ path: '*', method: RequestMethod.ALL }); // Aplica a todas las rutas
+  // }
 
 }
 

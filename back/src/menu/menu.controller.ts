@@ -6,19 +6,21 @@ import { Menu } from './entities/menu.entity';
 export class MenuController {
   constructor(private readonly menuService: MenuService) {}
 
-  @Get()
-  async getMenu() {
-    return this.menuService.getAllMenu();
-  }
+    @Get()
+    async getMenu() {
+      return this.menuService.getAllMenu();
+    }
 
-  @Get('comida')
-  async getMenuOne(){
-    return this.menuService.getMenuNames();
-  }
+    @Get('comida')
+    async getMenuOne(){
+      return this.menuService.getMenuNames();
+    }
 
-  @Get(':id')
-  async getMenuById(@Param('id') id: string): Promise<Menu> {
-  return this.menuService.getIdMenu(id);
+
+    @Get(':name')
+    async getMenuByName(@Param('name') name: string): Promise<Menu> {
+      return this.menuService.getMenuByName(name);
+    }
 }
-}
+
 

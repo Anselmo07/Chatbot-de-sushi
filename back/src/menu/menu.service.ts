@@ -20,16 +20,12 @@ export class MenuService {
     return menus.map((menu) => menu.name);
   }
 
-  async getIdMenu(id:string):Promise<Menu>{
-    try {
-      const menu = await this.menuRepository.findOne({ where: { _id: new ObjectId(id) } });
-      if (!menu) {
-        throw new NotFoundException(`Menu item with ID ${id} not found`);
-      }
-      return menu;
-    } catch (error) {
-      throw new BadRequestException(`Invalid ID format: ${id}`);
+  async getMenuByName(name: string): Promise<Menu> {
+    const menu = await this.menuRepository.findOne({ where: { name } });
+    if (!menu) {
+      throw new NotFoundException(`Producto con nombre ${name} no encontrado`);
     }
+    return menu;
   }
 
 
