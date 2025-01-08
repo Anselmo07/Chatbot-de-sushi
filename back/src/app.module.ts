@@ -8,6 +8,7 @@ import { OrdersModule } from './orders/orders.module';
 import { FaqsModule } from './faqs/faqs.module';
 import { Faq } from './faqs/entities/faq.entity';
 import { BusinessHoursMiddleware } from './middleware/horarios';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { BusinessHoursMiddleware } from './middleware/horarios';
     MenuModule,
     OrdersModule,
     FaqsModule,
+    ChatModule,
   ],
   controllers: [],
   providers: [AppService],

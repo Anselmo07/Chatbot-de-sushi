@@ -21,13 +21,14 @@ const Chat = () => {
       method = 'POST';
     } else if (input.toLowerCase().includes('menu')) {
       endpoint = 'menu/comida';
-    } else if (input.toLowerCase().includes('abierto')) {
+    } else if (input.toLowerCase().includes('estan abierto')) {
       endpoint = 'faqs/status';
     } else if (input.toLowerCase().includes('ayuda')) {
-      endpoint = "chat/ayuda";
+      endpoint = "chat";
+    }else if (input.toLowerCase().includes("ubicacion")){
+      endpoint = "chat/ubicacion"
     } else if (input.trim()) {
-      // Aquí aplicamos la codificación de URL
-      endpoint = `menu/${encodeURIComponent(input.trim())}`;  // Codifica correctamente el nombre
+      endpoint = `menu/${encodeURIComponent(input.trim())}`; 
     } else {
       endpoint = '';
     }
@@ -50,7 +51,7 @@ const Chat = () => {
 
         if (response.status === 403) {
           botMessage.text =
-            data.message || 'Lo siento, el negocio está cerrado. Solo abrimos de 11:00 a 15:00.';
+            data.message || 'Lo siento, no entiendo el mensaje, prueba nuevamente o escribe ayuda';
         } else if (endpoint === 'orders') {
           botMessage.text = data.message || 'No pude procesar tu pedido.';
         } else if (endpoint === 'menu/comida') {
@@ -61,11 +62,11 @@ const Chat = () => {
           } else {
             botMessage.text = 'No pude encontrar el menú.';
           }
-        } else if (endpoint.startsWith('menu/')) {  // Respuesta cuando se consulta un producto específico
+        } else if (endpoint.startsWith('menu/')) {
           if (data && data.name) {
             // Filtramos solo los campos necesarios
             const botMessageText = `Producto: ${data.name}\nDescripción: ${data.description}\nPrecio: $${data.price}`;
-            botMessage.text = botMessageText;  // Mostrar solo nombre, descripción y precio
+            botMessage.text = botMessageText; 
           } else {
             botMessage.text = data.message || 'Producto no encontrado.';
           }
@@ -75,7 +76,26 @@ const Chat = () => {
           } else {
             botMessage.text = 'No pude encontrar las preguntas frecuentes.';
           }
+        } else if (endpoint === 'chat') {
+          if (Array.isArray(data)) {
+            const chatCommands = data.map(item => {
+              return `- ${item.comand1}\n- ${item.comand2}\n- ${item.comand3}\n- ${item.comand4}\n- ${item.comand5}`;
+            }).join('\n\n');
+        
+            botMessage.text = `${data[0].title}\n\n${chatCommands}`;
+          } else if (data && data.message) {
+            botMessage.text = data.message;
+          } else {
+            botMessage.text = 'No pude encontrar las preguntas frecuentes.';
+          }
+        } else if (endpoint === 'chat/ubicacion') {
+          if (data && data.ubicacion) {
+            botMessage.text = `La ubicación es: ${data.ubicacion}`;
+          } else {
+            botMessage.text = 'No pude encontrar las preguntas frecuentes.';
+          }
         }
+        
 
         setMessages((prevMessages) => [...prevMessages, botMessage]);
       } catch (error) {
@@ -119,8 +139,3 @@ const Chat = () => {
 };
 
 export default Chat;
-
-
-
-
-
