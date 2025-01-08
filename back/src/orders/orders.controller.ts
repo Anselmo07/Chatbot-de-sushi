@@ -11,7 +11,7 @@ export class OrdersController {
     ): Promise<{ message: string }> {
       const { userName, address, product } = orderData;
       await this.ordersService.createOrder(userName, address, product);
-      return { message: 'Pedido en proceso, en 15 minutos llega.' };
+      return { message: 'Pedido en proceso, en 15 minutos llega. 🛵' };
     }
   
 }

@@ -22,9 +22,6 @@ export class MenuService {
 
   async getMenuByName(name: string): Promise<Menu> {
     const menu = await this.menuRepository.findOne({ where: { name } });
-    if (!menu) {
-      throw new NotFoundException(`Producto con nombre ${name} no encontrado`);
-    }
     return menu;
   }
 
