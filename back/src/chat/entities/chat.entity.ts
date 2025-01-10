@@ -1,10 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ObjectId } from "mongodb";
+import { Column, Entity, ObjectIdColumn } from "typeorm";
 
 @Entity()
 export class Chat{
-    @PrimaryGeneratedColumn()
-    id: number;
+    @ObjectIdColumn()
+    _id: ObjectId;
 
+    @Column()
+    id: number;
+    
     @Column()
     title:string;
     

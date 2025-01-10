@@ -12,10 +12,10 @@ import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // Carga variables de entorno desde .env
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: 'mongodb+srv://anselmo:chatbot@anselmo.2mlml.mongodb.net/chatbot?retryWrites=true&w=majority',
+      url: process.env.MONGO_URI,
       useUnifiedTopology: true,
       autoLoadEntities: true,
       synchronize: true,
@@ -31,12 +31,6 @@ import { ChatModule } from './chat/chat.module';
   providers: [AppService],
 })
 export class AppModule {
-
-  // configure(consumer: MiddlewareConsumer) {
-  //   consumer
-  //     .apply(BusinessHoursMiddleware) // Aplica el middleware
-  //     .forRoutes({ path: '*', method: RequestMethod.ALL }); // Aplica a todas las rutas
-  // }
 
 }
 
