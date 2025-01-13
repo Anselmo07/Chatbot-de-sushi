@@ -10,17 +10,13 @@ export class FAQService {
     private faqRepository: Repository<Faq >,
   ) {}
 
-  // Obtener todas las FAQs
   async getAllFAQs(): Promise<Faq[]> {
-    console.log('Consultando las FAQs...');
     const faqs = await this.faqRepository.find();
-    console.log('FAQs encontradas:', faqs);
     return faqs;
   }
 
-  // Crear una nueva FAQ
   async createFAQ(data: Partial<Faq >): Promise<Faq > {
-    const newFAQ = this.faqRepository.create(data);
+    const newFAQ = await this.faqRepository.create(data);
     return this.faqRepository.save(newFAQ);
   }
 

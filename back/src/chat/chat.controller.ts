@@ -9,7 +9,7 @@ export class ChatController {
 
     @Get()
     async getChat(){
-        return this.chatService.chatGet()
+        return await this.chatService.chatGet()
     }
 
     @Get('ubicacion')

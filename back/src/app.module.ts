@@ -30,13 +30,6 @@ import { ChatModule } from './chat/chat.module';
   controllers: [],
   providers: [AppService],
 })
-export class AppModule {
-      
-    configure(consumer: MiddlewareConsumer) {
-      consumer
-        .apply(BusinessHoursMiddleware)
-        .forRoutes({ path: '*', method: RequestMethod.ALL });
-    }
-}
+export class AppModule {}
 
 

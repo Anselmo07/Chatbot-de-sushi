@@ -7,7 +7,7 @@ export class BusinessHoursMiddleware implements NestMiddleware {
         const currentHour = now.getHours();
 
         if (currentHour < 10 || currentHour >= 20) {
-            throw new HttpException('Cerrado. Solo abrimos de 11:00 a 15:00.', HttpStatus.FORBIDDEN);
+            throw new HttpException('Cerrado. Solo abrimos de 11:00 a 20:00.', HttpStatus.FORBIDDEN);
         }
         next();
     }

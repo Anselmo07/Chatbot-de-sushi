@@ -12,7 +12,7 @@ export class MenuService {
   ) {}
 
   async getAllMenu(): Promise<Menu[]> {
-    return this.menuRepository.find({ where: { available: true }, });
+    return await this.menuRepository.find({ where: { available: true }, });
   }
 
   async getMenuNames(): Promise<string[]> {

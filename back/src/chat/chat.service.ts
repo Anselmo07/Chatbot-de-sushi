@@ -9,7 +9,7 @@ export class ChatService {
 ){}
     
     async chatGet():Promise<Chat[]>{
-        return this.chatRepository.find()
+        return await this.chatRepository.find()
     }
 
     

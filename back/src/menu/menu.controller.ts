@@ -8,18 +8,18 @@ export class MenuController {
 
     @Get()
     async getMenu() {
-      return this.menuService.getAllMenu();
+      return await this.menuService.getAllMenu();
     }
 
     @Get('comida')
     async getMenuOne(){
-      return this.menuService.getMenuNames();
+      return await this.menuService.getMenuNames();
     }
 
 
     @Get(':name')
     async getMenuByName(@Param('name') name: string): Promise<Menu> {
-      return this.menuService.getMenuByName(name);
+      return await this.menuService.getMenuByName(name);
     }
 }
 

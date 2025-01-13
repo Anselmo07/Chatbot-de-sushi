@@ -6,13 +6,11 @@ import { Faq } from './entities/faq.entity';
 export class FAQController {
   constructor(private readonly faqService: FAQService) {}
 
-  // Obtener todas las FAQs
   @Get()
   async getFAQs(): Promise<Faq[]> {
     return this.faqService.getAllFAQs();
   }
 
-  // Crear una nueva FAQ
   @Post()
   async createFAQ(@Body() body: Partial<Faq>): Promise<Faq> {
     return this.faqService.createFAQ(body);
