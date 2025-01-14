@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './chatbot.css';
 
+
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -12,13 +13,12 @@ const Chat = () => {
   });
 
   const handleOrderSubmit = async (order) => {
-    console.log('Datos enviados al backend:', order); // Verifica los datos enviados
   
     try {
-      const response = await fetch('http://localhost:3000/orders', {
+      const response = await fetch(`http://localhost:3000/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(order), // Usa los datos actualizados
+        body: JSON.stringify(order),
       });
       const data = await response.json();
   
@@ -28,8 +28,7 @@ const Chat = () => {
       };
   
       setMessages((prevMessages) => [...prevMessages, botMessage]);
-    } catch (error) {
-      console.error('Error al enviar el pedido:', error);
+    } catch  {
       const botMessage = {
         sender: 'bot',
         text: 'Hubo un error al procesar tu pedido. Por favor, inténtalo de nuevo más tarde.',
@@ -77,10 +76,10 @@ const Chat = () => {
           };
           setMessages((prevMessages) => [...prevMessages, botMessage]);
         } else if (!orderData.product) {
-          const updatedOrderData = { ...orderData, product: input }; // Actualiza localmente
-          setOrderData(updatedOrderData); // Actualiza el estado
+          const updatedOrderData = { ...orderData, product: input }; 
+          setOrderData(updatedOrderData); 
           
-          // Llama a handleOrderSubmit usando la copia local
+        
           await handleOrderSubmit(updatedOrderData); 
           setIsOrder(false);;
         }

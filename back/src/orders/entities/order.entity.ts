@@ -12,10 +12,10 @@ export class Order {
   address: string;
 
   @Column()
-  product: string; // Puede ser el ID o el nombre del producto
-
+  product: string;
+  
   @Column({ default: 'En proceso' })
-  status: string; // Estado del pedido
+  status: string;
 }
 
 

@@ -27,6 +27,7 @@
     "@nestjs/mongoose": "^10.1.0",
     "@nestjs/platform-express": "^10.4.15",
     "@nestjs/typeorm": "^10.0.2",
+    "dotenv": "^16.4.7",
     "mongo": "^0.1.0",
     "mongodb": "^5.9.2",
     "mongoose": "^8.9.3",

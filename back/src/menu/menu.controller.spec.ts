@@ -1,8 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MenuController } from './menu.controller';
 import { MenuService } from './menu.service';
-import { CreateMenuDto } from './dto/create-menu.dto';
-import { UpdateMenuDto } from './dto/update-menu.dto';
 
 describe('MenuController', () => {
   let controller: MenuController;

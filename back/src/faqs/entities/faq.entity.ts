@@ -3,7 +3,7 @@ import { Column, Entity, ObjectIdColumn } from "typeorm";
 
 @Entity()
 export class Faq {
-    @ObjectIdColumn() // Esto define la columna primaria en MongoDB
+    @ObjectIdColumn()
     _id: ObjectId;
 
     @Column()
