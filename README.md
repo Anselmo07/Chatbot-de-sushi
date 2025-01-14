@@ -62,7 +62,7 @@ Sigue estos pasos para instalar y correr el proyecto localmente:
 
   - "Menu"
 
--**Detalle del producto (nombre del producto)**
+- **Detalle del producto (nombre del producto)**
   
   - "Uramaki"
 
