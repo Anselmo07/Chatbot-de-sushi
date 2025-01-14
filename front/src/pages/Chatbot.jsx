@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import './chatbot.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
+
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -15,7 +19,7 @@ const Chat = () => {
   const handleOrderSubmit = async (order) => {
   
     try {
-      const response = await fetch(`http://localhost:3000/orders`, {
+      const response = await fetch(`${API_URL}/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(order),
@@ -63,7 +67,7 @@ const Chat = () => {
       
           const botMessage = {
             sender: 'bot',
-            text: 'Gracias. Ahora, ingresa tu dirección.',
+            text: 'Ingresa tu dirección.',
           };
           setMessages((prevMessages) => [...prevMessages, botMessage]);
         } else if (!orderData.address) {
@@ -72,7 +76,7 @@ const Chat = () => {
       
           const botMessage = {
             sender: 'bot',
-            text: 'Perfecto. Ahora, ingresa el producto que deseas.',
+            text: 'Ingresa el producto que deseas.',
           };
           setMessages((prevMessages) => [...prevMessages, botMessage]);
         } else if (!orderData.product) {
@@ -97,7 +101,7 @@ const Chat = () => {
         try {
           if (!endpoint) return;
 
-          const response = await fetch(`http://localhost:3000/${endpoint}`);
+          const response = await fetch(`${API_URL}/${endpoint}`);
           const data = await response.json();
 
           let botMessage = { sender: 'bot', text: '' };
