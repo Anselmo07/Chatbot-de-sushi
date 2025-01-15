@@ -141,7 +141,7 @@ const Chat = () => {
         } catch {
           const botMessage = {
             sender: 'bot',
-            text: 'Hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.',
+            text: 'Lo siento, no entiendo el mensaje, prueba nuevamente o escribe "ayuda".',
           };
           setMessages((prevMessages) => [...prevMessages, botMessage]);
         }
@@ -149,7 +149,7 @@ const Chat = () => {
     } else {
       const botMessage = {
         sender: 'bot',
-        text: 'No entendí tu mensaje. Si necesitas ayuda utiliza "ayuda".',
+        text: 'Lo siento, no entiendo el mensaje, prueba nuevamente o escribe "ayuda".',
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     }
