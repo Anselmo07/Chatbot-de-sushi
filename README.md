@@ -9,7 +9,7 @@ Sigue estos pasos para instalar y correr el proyecto localmente:
 1. **Clona este repositorio:**
 
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/Anselmo07/Chatbot-de-sushi.git
    cd <NOMBRE_DEL_DIRECTORIO>
    ```
 
@@ -143,11 +143,7 @@ Los siguientes endpoints están configurados para manejar las solicitudes del ch
 - **Node.js** como entorno de ejecución.
 - **CSS** para el diseño y estilos del chatbot.
 
-## Contribuciones
-
-Si deseas contribuir al proyecto, crea un fork del repositorio, realiza tus cambios y envía un pull request. ¡Gracias por tu apoyo!
-
 ---
 
-Para cualquier duda o consulta, contáctanos en: [soporte@sushi-chatbot.com](mailto:soporte@sushi-chatbot.com)
+
 
