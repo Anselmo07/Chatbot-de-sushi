@@ -1,24 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Faq } from './entities/faq.entity';
 
 @Injectable()
 export class FAQService {
-  constructor(
-    @InjectRepository(Faq )
-    private faqRepository: Repository<Faq >,
-  ) {}
-
-  async getAllFAQs(): Promise<Faq[]> {
-    const faqs = await this.faqRepository.find();
-    return faqs;
-  }
-
-  async createFAQ(data: Partial<Faq >): Promise<Faq > {
-    const newFAQ = await this.faqRepository.create(data);
-    return this.faqRepository.save(newFAQ);
-  }
 
   isOpen(): string {
     const now = new Date();

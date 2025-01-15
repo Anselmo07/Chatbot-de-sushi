@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 import { MenuModule } from './menu/menu.module';
 import { OrdersModule } from './orders/orders.module';
 import { FaqsModule } from './faqs/faqs.module';
-import { Faq } from './faqs/entities/faq.entity';
 import { ChatModule } from './chat/chat.module';
 
 @Module({
@@ -18,7 +17,6 @@ import { ChatModule } from './chat/chat.module';
       autoLoadEntities: true,
       synchronize: true,
       logging: true,
-      entities:[Faq],
     }),
     MenuModule,
     OrdersModule,
