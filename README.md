@@ -54,7 +54,7 @@ Sigue estos pasos para instalar y correr el proyecto localmente:
    npm start
    ```
 
-   El frontend estará disponible en `http://localhost:5173` y el backend en `http://localhost:8080`.
+   El frontend estará disponible en `http://localhost:5173` y el backend en `http://localhost:3000`.
 
 ## Ejemplos de Mensajes que Entiende el Bot
 
