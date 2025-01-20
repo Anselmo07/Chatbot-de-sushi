@@ -15,7 +15,7 @@ import { ChatModule } from './chat/chat.module';
       url: process.env.MONGO_URI,
       useUnifiedTopology: true,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
       logging: true,
     }),
     MenuModule,
